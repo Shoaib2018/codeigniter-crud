@@ -31,7 +31,7 @@ class UserCrud extends BaseController
             'email'  => $this->request->getVar('email'),
         ];
         $userModel->insert($data);
-        return $this->response->redirect(site_url('/users-list'));
+        return $this->response->redirect(site_url('/users'));
     }
 
     // show single user
@@ -51,13 +51,15 @@ class UserCrud extends BaseController
             'email'  => $this->request->getVar('email'),
         ];
         $userModel->update($id, $data);
-        return $this->response->redirect(site_url('/users-list'));
+        return $this->response->redirect(site_url('/users'));
+
+        //    action="{{app.request.getBaseURL()}}/update"
     }
  
     // delete user
     public function delete($id = null){
         $userModel = new UserModel();
         $data['user'] = $userModel->where('id', $id)->delete($id);
-        return $this->response->redirect(site_url('/users-list'));
+        return $this->response->redirect(site_url('/users'));
     }    
 }

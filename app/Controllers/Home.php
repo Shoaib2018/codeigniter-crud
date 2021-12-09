@@ -11,6 +11,6 @@ class Home extends BaseController
         //return redirect()->to('users-list'); 
         
         //if you are using route then use
-        return redirect()->route('users-list');
+        return redirect()->route('users');
     }
 }
