@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Codeigniter User Login Example</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-6">
+                <div class="d-flex justify-content-end">
+                    <a href="{{ app.request.getBaseURL() }}/users-list" class="btn btn-success mb-2">Users</a>
+                    <a href="{{ app.request.getBaseURL() }}/register" class="btn btn-success mb-2">Register</a>
+                </div>
+                <h3>SignIn</h3>
+
+                {% if app.session.flashbag.has('msg') %}
+                    {% if app.session.flashbag.get('msg') %}
+                        <div class="alert alert-success">
+                            <strong>&Eacute;xito:</strong> {{ app.session.flashbag.get('msg') }}
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <form action="{{app.request.getBaseURL()}}/LoginController/signin" method="post">
+                    <div class="mb-3">
+                        <input type="email" name="email" placeholder="Email" value="" class="form-control" >
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="password" name="password" placeholder="Password" class="form-control" >
+                    </div>
+                    
+                    <button type="submit" class="btn btn-dark">Login</button>
+                </form>
+            </div>
+              
+        </div>
+    </div>
+  </body>
+</html>
